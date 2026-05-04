@@ -120,6 +120,6 @@ Eddyter currently ships as a React component. **Vue and Svelte wrappers are plan
 
 ## Need help?
 
-- 📘 [Documentation](https://www.cteditor.com/docs)
+- 📘 [Documentation](https://eddyter.com/docs)
 - 🐛 [Report a bug](https://github.com/EddyterAI/eddyter/issues/new?template=bug_report.yml)
 - 💬 [Discord](https://discord.com/channels/1457444571104542803/1457444572081819690)

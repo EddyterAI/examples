@@ -40,7 +40,7 @@ Every example wires the editor with the same set of features available on your p
 
 ## Resources
 
-- 📘 [Documentation](https://www.cteditor.com/docs)
+- 📘 [Documentation](https://eddyter.com/docs)
 - 🎮 [Live demo](https://eddyter.com)
 - 🐛 [Report a bug](https://github.com/EddyterAI/eddyter/issues)
 - 💬 [Discord community](https://discord.com/channels/1457444571104542803/1457444572081819690)
