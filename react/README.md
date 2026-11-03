@@ -12,7 +12,7 @@ npm run dev
 
 Open http://localhost:5173.
 
-> **Get an API key**: sign up at [eddyter.com](https://eddyter.com), then grab your key from **License Keys** in your dashboard.
+> **Get an API key**: sign up at [eddyter.com](https://eddyter.com), then grab your key from [**License Keys**](https://eddyter.com/user/license-key) in your dashboard.
 
 ## The whole integration
 
@@ -70,7 +70,7 @@ That's it. AI rewrite, image generation, transcription, autocomplete, and inline
 | `initialContent` | `string` | Initial HTML to load into the editor. |
 | `mentionUserList` | `string[]` | Names that appear when typing `@` in the editor. |
 | `onAuthSuccess` | `() => void` | Fires once your API key is verified. |
-| `onAuthError` | `(error: Error) => void` | Fires when key verification fails (invalid key, expired plan, etc.). |
+| `onAuthError` | `(error: string) => void` | Fires when key verification fails (invalid key, expired plan, etc.). |
 | `customVerifyKey` | `async (key) => { success, message }` | Optional — verify the key through your own backend instead of calling Eddyter directly. |
 | `className` | `string` | Applied to the editor's outer container. |
 
@@ -94,29 +94,20 @@ const persist = useDebouncedCallback(async (html: string) => {
 
 ## Using in Next.js
 
-The same `eddyter` package works in Next.js (App Router or Pages). Because the editor uses `contenteditable` and DOM-only APIs, mark the page as a client component and dynamic-import the editor with `ssr: false`:
-
-```tsx
-"use client";
-
-import dynamic from "next/dynamic";
-import "eddyter/style.css";
-
-const Editor = dynamic(
-  () => import("./Editor").then((m) => m.Editor),
-  { ssr: false },
-);
-
-export default function Page() {
-  return <Editor />;
-}
-```
-
-A dedicated Next.js example is on the roadmap.
+The same `eddyter` package works in Next.js. Put the editor in a `"use client"` component; see the dedicated [Next.js example](../nextjs).
 
 ## Other frameworks
 
-Eddyter currently ships as a React component. **Vue and Svelte wrappers are planned** — follow [`eddyter` on npm](https://www.npmjs.com/package/eddyter) or [join Discord](https://discord.com/channels/1457444571104542803/1457444572081819690) for release notifications.
+Eddyter also has official packages for other stacks; each has its own example in this repo:
+
+| Framework | Package | Example |
+|---|---|---|
+| Vue | `@eddyter/vue` | [`vue/`](../vue) |
+| Svelte | `@eddyter/svelte` | [`svelte/`](../svelte) |
+| Angular | `@eddyter/angular` | [`angular/`](../angular) |
+| Vanilla JS | `@eddyter/core` | [`vanilla-js/`](../vanilla-js) |
+| React Native | `@eddyter/react-native` | [`react-native/`](../react-native) |
+| Laravel | [`eddyter/laravel`](https://github.com/EddyterAI/laravel) (Composer) | — |
 
 ## Need help?
 

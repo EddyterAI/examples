@@ -1,0 +1,33 @@
+<!doctype html>
+<!--
+  Eddyter with a <script> tag: no npm, no build step.
+  Open this file in a browser (or serve it with any static server) after
+  replacing YOUR_API_KEY below. The IIFE bundle injects its own stylesheet.
+-->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eddyter + Vanilla JS (CDN)</title>
+  </head>
+  <body>
+    <main style="max-width: 900px; margin: 2rem auto; padding: 0 1rem">
+      <h1>Eddyter + Vanilla JS (CDN)</h1>
+      <p>Plug-and-play AI rich text editor. Start typing below.</p>
+      <div id="editor"></div>
+    </main>
+
+    <!-- Pin a version in production. -->
+    <script src="https://unpkg.com/@eddyter/core@1.0.4/dist/editor.iife.js"></script>
+    <script>
+      const instance = Eddyter.init({
+        container: "#editor",
+        apiKey: "YOUR_API_KEY", // https://eddyter.com/user/license-key
+        initialContent: "<p>Start writing...</p>",
+        onChange: (html) => console.log("Content:", html),
+        onReady: () => console.log("Editor ready!"),
+        onAuthError: (err) => console.error("Editor auth failed:", err),
+      });
+    </script>
+  </body>
+</html>

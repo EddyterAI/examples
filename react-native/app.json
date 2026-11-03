@@ -1,0 +1,27 @@
+{
+  "expo": {
+    "name": "Eddyter Example",
+    "slug": "eddyter-react-native-example",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.example.eddyter",
+      "infoPlist": {
+        "NSMicrophoneUsageDescription": "Eddyter uses the microphone for speech-to-text."
+      }
+    },
+    "android": {
+      "predictiveBackGestureEnabled": false,
+      "package": "com.example.eddyter",
+      "permissions": [
+        "RECORD_AUDIO",
+        "MODIFY_AUDIO_SETTINGS"
+      ]
+    },
+    "plugins": [
+      "react-native-blob-util"
+    ]
+  }
+}

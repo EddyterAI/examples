@@ -1,0 +1,7 @@
+/* Eddyter styles must be global (in the initial bundle), not inside a lazy-loaded component. */
+@import '@eddyter/angular/styles.css';
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
