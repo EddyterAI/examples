@@ -1,42 +1,62 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Eddyter + Next.js
 
-## Getting Started
+A minimal Next.js (App Router) app showing how to add the [Eddyter](https://eddyter.com) AI rich text editor with the [`eddyter`](https://www.npmjs.com/package/eddyter) package.
 
-First, run the development server:
+## Setup
 
 ```bash
+npm install
+cp .env.example .env.local   # paste your API key
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000. Get an API key from [eddyter.com/user/license-key](https://eddyter.com/user/license-key).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## The whole integration
 
-## Eddyter setup
+The editor uses the DOM, so it lives in a client component.
 
-1. Create an API key in your [Eddyter dashboard](https://eddyter.com/user/license-key).
-2. Copy `./.env.example` to `./.env.local` and set `NEXT_PUBLIC_EDITOR_API_KEY`.
-3. Run the dev server (`npm run dev`) and open `http://localhost:3000`.
+`app/Editor.tsx`:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```tsx
+"use client";
 
-## Learn More
+import { ConfigurableEditorWithAuth, EditorProvider } from "eddyter";
 
-To learn more about Next.js, take a look at the following resources:
+export default function Editor() {
+  const apiKey = process.env.NEXT_PUBLIC_EDITOR_API_KEY as string;
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+  return (
+    <EditorProvider>
+      <ConfigurableEditorWithAuth
+        apiKey={apiKey}
+        onChange={(html) => console.log(html)}
+        initialContent="<p>Start writing...</p>"
+      />
+    </EditorProvider>
+  );
+}
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+`app/layout.tsx` imports the stylesheet once for the whole app:
 
-## Deploy on Vercel
+```tsx
+import "eddyter/style.css";
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+`app/page.tsx` stays a server component and renders `<Editor />`.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Pages Router
+
+The same component works in the Pages Router. If you see hydration or `window is not defined` errors, load it with `next/dynamic` and `ssr: false`:
+
+```tsx
+import dynamic from "next/dynamic";
+
+const Editor = dynamic(() => import("../components/Editor"), { ssr: false });
+```
+
+## More
+
+- [React & Next.js guide](https://github.com/EddyterAI/eddyter/blob/main/docs/react.md): all props, theming, version history and more
+- [Full documentation](https://eddyter.com/docs)
