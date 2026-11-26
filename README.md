@@ -17,6 +17,14 @@ Runnable starter projects showing how to drop [**Eddyter**](https://eddyter.com)
 | **React Native** (Expo dev build) | [`@eddyter/react-native`](https://www.npmjs.com/package/@eddyter/react-native) | [`react-native/`](./react-native) |
 | **PHP / Laravel** | [`eddyter/laravel`](https://github.com/EddyterAI/laravel) (Composer) | Coming soon |
 
+## Tutorials
+
+Code from the Eddyter video tutorials on YouTube.
+
+| # | Tutorial | Folder |
+|---|---|---|
+| 1 | Add an AI rich text editor to Next.js | [`tutorials/01-nextjs-quickstart/`](./tutorials/01-nextjs-quickstart) |
+
 ## Quick start
 
 ```bash
