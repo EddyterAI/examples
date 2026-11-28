@@ -24,6 +24,7 @@ Code from the Eddyter video tutorials on YouTube.
 | # | Tutorial | Folder |
 |---|---|---|
 | 1 | Add an AI rich text editor to Next.js | [`tutorials/01-nextjs-quickstart/`](./tutorials/01-nextjs-quickstart) |
+| 2 | Version history: save, preview and restore | [`tutorials/02-version-history/`](./tutorials/02-version-history) |
 
 ## Quick start
 
